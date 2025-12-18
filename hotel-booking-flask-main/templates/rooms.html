@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Rooms Header -->
+<div class="container-fluid bg-primary py-5 mb-5">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-white">
+                <h1 class="display-4 mb-4">Our Rooms</h1>
+                <p class="lead mb-4">Get your Magical journey here!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rooms List --> 
+<div class="container mb-5"> 
+    <div class="row"> 
+        <!-- Room 1: Deluxe Room -->
+        <div class="col-md-6 mb-4"> 
+            <div class="card shadow-sm h-100"> 
+                <div class="row g-0"> 
+                    <div class="col-md-5"> 
+                        <img src="{{ url_for('static', filename='images/abc.jpg') }}" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Deluxe Room"> 
+                    </div> 
+                    <div class="col-md-7"> 
+                        <div class="card-body h-100 d-flex flex-column"> 
+                            <div> 
+                                <h3 class="card-title">Deluxe Room</h3> 
+                                <p class="card-text">Spacious room with king-size bed, view of woods, and modern amenities. Perfect for couples or business travelers.</p> 
+                            </div> 
+                            <div class="mt-auto"> 
+                                <div class="d-flex justify-content-between align-items-center"> 
+                                    <h4 class="text-primary mb-0">15,000 <small class="text-muted">BDT</small></h4> 
+                                    <a href="{{ url_for('booking', room_id=1) }}" class="btn btn-primary">Book Now</a> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+
+        <!-- Room 2: Executive Suite -->
+        <div class="col-md-6 mb-4"> 
+            <div class="card shadow-sm h-100"> 
+                <div class="row g-0"> 
+                    <div class="col-md-5"> 
+                        <img src="{{ url_for('static', filename='images/yy.jpg') }}" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Executive Suite"> 
+                    </div> 
+                    <div class="col-md-7"> 
+                        <div class="card-body h-100 d-flex flex-column"> 
+                            <div> 
+                                <h3 class="card-title">Executive Suite</h3> 
+                                <p class="card-text">Luxurious suite with separate beds, premium furnishings, and exclusive amenities for an unforgettable stay.</p> 
+                            </div> 
+                            <div class="mt-auto"> 
+                                <div class="d-flex justify-content-between align-items-center"> 
+                                    <h4 class="text-primary mb-0">10,000 <small class="text-muted">BDT</small></h4> 
+                                    <a href="{{ url_for('booking', room_id=2) }}" class="btn btn-primary">Book Now</a> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+
+        <!-- Room 3: Standard Room -->
+        <div class="col-md-6 mb-4"> 
+            <div class="card shadow-sm h-100"> 
+                <div class="row g-0"> 
+                    <div class="col-md-5"> 
+                        <img src="{{ url_for('static', filename='images/fam.jpg') }}" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Standard Room"> 
+                    </div> 
+                    <div class="col-md-7"> 
+                        <div class="card-body h-100 d-flex flex-column"> 
+                            <div> 
+                                <h3 class="card-title">Family</h3> 
+                                <p class="card-text">Comfortable and cozy room with essential amenities.</p> 
+                            </div> 
+                            <div class="mt-auto"> 
+                                <div class="d-flex justify-content-between align-items-center"> 
+                                    <h4 class="text-primary mb-0">12,000 <small class="text-muted">BDT</small></h4> 
+                                    <a href="{{ url_for('booking', room_id=3) }}" class="btn btn-primary">Book Now</a> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+    </div> 
+</div>
+
+<!-- Contact Section -->
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="mb-4">Need Help?</h2>
+                <p class="lead mb-4">Our staff is always ready to help you find the perfect room for your stay.</p>
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-phone-alt text-primary me-3 fa-2x"></i>
+                    <div>
+                        <h5 class="mb-0">Call Us</h5>
+                        <p class="mb-0">+8801303681366</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-envelope text-primary me-3 fa-2x"></i>
+                    <div>
+                        <h5 class="mb-0">Email Us</h5>
+                        <p class="mb-0">nishad@hotelbooking.com</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-map-marker-alt text-primary me-3 fa-2x"></i>
+                    <div>
+                        <h5 class="mb-0">Visit Us</h5>
+                        <p class="mb-0">Enani Beach, Cox's Bazar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="mb-4">Send Us a Message</h4>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

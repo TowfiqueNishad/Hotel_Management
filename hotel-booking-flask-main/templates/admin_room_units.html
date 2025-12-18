@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Room Units</h2>
+    <a href="{{ url_for('admin_room_unit_create') }}" class="btn btn-success">Create Room</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Room No</th>
+        <th>Floor</th>
+        <th>Occupied</th>
+        <th>Available</th>
+        <th>Maintenance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in units %}
+      <tr>
+        <td>{{ u.room_id }}</td>
+        <td>{{ u.type_name or '-' }}</td>
+        <td>{{ u.room_no or '-' }}</td>
+        <td>{{ u.floor or '-' }}</td>
+        <td>{% if u.occupied %}Yes{% else %}No{% endif %}</td>
+        <td>{% if u.available %}Yes{% else %}No{% endif %}</td>
+        <td>{% if u.maintenance %}Yes{% else %}No{% endif %}</td>
+        <td>
+          <a href="{{ url_for('admin_room_unit_edit', room_id=u.room_id) }}" class="btn btn-sm btn-primary">Edit</a>
+          <form action="{{ url_for('admin_room_unit_delete', room_id=u.room_id) }}" method="post" style="display:inline-block;" onsubmit="return confirm('Delete this room?');">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}

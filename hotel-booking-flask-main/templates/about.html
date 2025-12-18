@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1 class="display-4 mb-4">About Hedwig's Palace</h1>
+            <p class="lead mb-4">Welcome to your perfect magical experience</p>
+            
+            <div class="mb-5">
+                <h2 class="h3 mb-3">Our Story</h2>
+                <p>Founded with a passion for exceptional hospitality, Hotel Booking has been connecting travelers with their ideal accommodations since 2010. What began as a small family-owned business has grown into a trusted platform for discerning travelers seeking quality, comfort, and memorable experiences.</p>
+                <p>Our team of hospitality experts personally vets each property in our collection to ensure it meets our high standards of excellence, giving you confidence in every booking you make with us.</p>
+            </div>
+            
+            <div class="mb-5">
+                <h2 class="h3 mb-3">Our Mission</h2>
+                <p>Where ancient enchantment meets modern elegance, and ambition finds its sanctuary.
+Born from whispers of old magic and forged with cunning vision, Serpent's Haven Hotel rises as a beacon for those who seek more than mere accommodation—we offer transformation. Our doors open to a realm where the mundane world fades away, replaced by an atmosphere steeped in mystique, power, and timeless allure.
+Every corridor echoes with subtle enchantment. Our emerald-lit hallways and silver-adorned chambers are designed to awaken the ambition within you, while our obsidian marble and serpentine accents remind you that true greatness requires both grace and guile. Here, shadows dance with sophistication, and every detail has been woven with intention—from the candlelit common areas to the spell-like comfort of our luxurious rooms.</p>
+                
+            
+
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h3 class="card-title h4">Our Commitment</h3>
+                    <p class="card-text">We're committed to providing exceptional service and ensuring your stay exceeds expectations. Your satisfaction is our top priority.</p>
+                </div>
+            </div>
+            
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h3 class="card-title h4">Sustainability</h3>
+                    <p class="card-text">We're proud to partner with eco-friendly properties and promote sustainable tourism practices that respect local communities and environments.</p>
+                </div>
+            </div>
+            
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="card-title h4">Have Questions?</h3>
+                    <p class="card-text">Our friendly team is here to help with any inquiries about our services or properties.</p>
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="bg-light p-4 rounded">
+                <h2 class="h3 mb-3">Testimonials</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="p-3 h-100 border rounded">
+                            <p class="fst-italic">"The booking process was seamless, and the hotel exceeded our expectations. Will definitely use this service again!"</p>
+                            <p class="small mb-0">— Sarah T., New York</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="p-3 h-100 border rounded">
+                            <p class="fst-italic">"Found the perfect boutique hotel for our anniversary thanks to the detailed descriptions and accurate photos."</p>
+                            <p class="small mb-0">— Michael & Lisa, Chicago</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 h-100 border rounded">
+                            <p class="fst-italic">"As a frequent business traveler, I appreciate the consistency and quality of the hotels in their collection."</p>
+                            <p class="small mb-0">— James R., London</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

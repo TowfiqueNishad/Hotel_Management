@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>User Phones</h2>
+    <a href="{{ url_for('admin_user_phone_create') }}" class="btn btn-success">Add Phone</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in phones %}
+      <tr>
+        <td>{{ p.user_id }}</td>
+        <td>{{ p.username or '-' }}</td>
+        <td>{{ p.phone }}</td>
+        <td>
+          <form action="{{ url_for('admin_user_phone_delete') }}" method="post" style="display:inline-block;" onsubmit="return confirm('Delete this phone for user?');">
+            <input type="hidden" name="user_id" value="{{ p.user_id }}">
+            <input type="hidden" name="phone" value="{{ p.phone }}">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}

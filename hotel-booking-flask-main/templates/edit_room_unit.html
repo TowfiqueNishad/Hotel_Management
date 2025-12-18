@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ 'Edit' if unit else 'Create' }} Room Unit</h3>
+          <form method="post">
+            <div class="mb-3">
+              <label class="form-label">Type</label>
+              <select name="type_id" class="form-select">
+                <option value="">-- Select Type --</option>
+                {% for t in types %}
+                <option value="{{ t.id }}" {% if unit and unit.type_id == t.id %}selected{% endif %}>{{ t.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Room Number</label>
+              <input type="text" name="room_no" class="form-control" value="{{ unit.room_no if unit else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Floor</label>
+              <input type="number" name="floor" class="form-control" value="{{ unit.floor if unit else '' }}">
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" name="occupied" id="occupied" {% if unit and unit.occupied %}checked{% endif %}>
+              <label class="form-check-label" for="occupied">Occupied</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" name="available" id="available" {% if unit and unit.available %}checked{% endif %}>
+              <label class="form-check-label" for="available">Available</label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" name="maintenance" id="maintenance" {% if unit and unit.maintenance %}checked{% endif %}>
+              <label class="form-check-label" for="maintenance">Maintenance</label>
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a href="{{ url_for('admin_room_units') }}" class="btn btn-secondary">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
