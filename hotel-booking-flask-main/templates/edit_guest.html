@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ 'Edit' if guest else 'Create' }} Guest</h3>
+          <form method="post">
+            <div class="mb-3">
+              <label class="form-label">Invoice # (optional)</label>
+              <select name="invoice_no" class="form-select">
+                <option value="">-- Select Invoice --</option>
+                {% for inv in invoices %}
+                <option value="{{ inv.invoice_no }}" {% if guest and guest.invoice_no == inv.invoice_no %}selected{% endif %}>{{ inv.invoice_no }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" name="name" class="form-control" value="{{ guest.name if guest else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Address</label>
+              <input type="text" name="address" class="form-control" value="{{ guest.address if guest else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" value="{{ guest.email if guest else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">NID</label>
+              <input type="text" name="NID" class="form-control" value="{{ guest.NID if guest else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="text" name="phone" class="form-control" value="{{ guest.phone if guest else '' }}">
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a href="{{ url_for('admin_guests') }}" class="btn btn-secondary">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

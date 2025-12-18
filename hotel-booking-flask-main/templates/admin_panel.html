@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Users</h2>
+    <div>
+      <a href="{{ url_for('admin_room_units') }}" class="btn btn-outline-secondary me-2">Rooms</a>
+      <a href="{{ url_for('admin_services') }}" class="btn btn-outline-info me-2">Services</a>
+      <a href="{{ url_for('admin_invoices') }}" class="btn btn-outline-warning me-2">Invoices</a>
+      <a href="{{ url_for('admin_user_phones') }}" class="btn btn-outline-dark me-2">User Phones</a>
+      <a href="{{ url_for('admin_hired_as') }}" class="btn btn-outline-success me-2">Hired As</a>
+      <a href="{{ url_for('admin_belong_to') }}" class="btn btn-outline-primary me-2">Assignments</a>
+      <a href="{{ url_for('admin_guests') }}" class="btn btn-outline-secondary me-2">Guests</a>
+      <a href="{{ url_for('admin_employees') }}" class="btn btn-outline-primary me-2">Employees</a>
+      <a href="{{ url_for('create_user') }}" class="btn btn-success">Create User</a>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>User Name</th>
+        <th>Admin Type</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Admin</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+      <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.user_name or '' }}</td>
+        <td>{{ u.admin_type or '' }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.phone }}</td>
+        <td>{% if u.is_admin %}Yes{% else %}No{% endif %}</td>
+        <td>
+          <a href="{{ url_for('edit_user', user_id=u.id) }}" class="btn btn-sm btn-primary">Edit</a>
+          <form action="{{ url_for('delete_user', user_id=u.id) }}" method="post" style="display:inline-block;" onsubmit="return confirm('Delete this user?');">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

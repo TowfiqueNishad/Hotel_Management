@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Bookings</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Room</th>
+        <th>User ID</th>
+        <th>Guest ID</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Checked In</th>
+        <th>Checked Out</th>
+        <th>Reserved</th>
+        <th>Cancelled</th>
+        <th>Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in bookings %}
+      <tr>
+        <td>{{ b.booking_id }}</td>
+        <td>{{ b.room_name }}</td>
+        <td>{{ b.user_id or '-' }}</td>
+        <td>{{ b.guest_id or '-' }}</td>
+        <td>{{ b.checkin_date }}</td>
+        <td>{{ b.checkout_date }}</td>
+        <td>{% if b.checked_in %}Yes{% else %}No{% endif %}</td>
+        <td>{% if b.checked_out %}Yes{% else %}No{% endif %}</td>
+        <td>{% if b.reserved %}Yes{% else %}No{% endif %}</td>
+        <td>{% if b.cancelled %}Yes{% else %}No{% endif %}</td>
+        <td>{{ b.created_at }}</td>
+        <td>
+          <form method="post" action="{{ url_for('admin_booking_checkin', booking_id=b.booking_id) }}" style="display:inline">
+            <button class="btn btn-sm btn-success" type="submit">Check-in</button>
+          </form>
+          <form method="post" action="{{ url_for('admin_booking_checkout', booking_id=b.booking_id) }}" style="display:inline">
+            <button class="btn btn-sm btn-secondary" type="submit">Check-out</button>
+          </form>
+          <form method="post" action="{{ url_for('admin_booking_cancel', booking_id=b.booking_id) }}" style="display:inline">
+            <button class="btn btn-sm btn-danger" type="submit">Cancel</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}

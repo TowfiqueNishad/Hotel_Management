@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Hired As Records</h2>
+    <a href="{{ url_for('admin_hired_as_create') }}" class="btn btn-success">Create Record</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Employee</th>
+        <th>Role</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in records %}
+      <tr>
+        <td>{{ r.hired_as_id }}</td>
+        <td>{{ r.employee_name or r.employee_id }}</td>
+        <td>{{ r.role or '-' }}</td>
+        <td>{{ r.start_date or '-' }}</td>
+        <td>{{ r.end_date or '-' }}</td>
+        <td>
+          <a href="{{ url_for('admin_hired_as_edit', hired_as_id=r.hired_as_id) }}" class="btn btn-sm btn-primary">Edit</a>
+          <form action="{{ url_for('admin_hired_as_delete', hired_as_id=r.hired_as_id) }}" method="post" style="display:inline-block;" onsubmit="return confirm('Delete this record?');">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}

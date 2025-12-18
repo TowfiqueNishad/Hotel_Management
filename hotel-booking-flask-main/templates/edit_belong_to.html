@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Assign Room to Booking</h3>
+          <form method="post">
+            <div class="mb-3">
+              <label class="form-label">Booking</label>
+              <select name="booking_id" class="form-select" required>
+                <option value="">-- Select Booking --</option>
+                {% for b in bookings %}
+                <option value="{{ b.booking_id }}">#{{ b.booking_id }} ({{ b.checkin_date }} → {{ b.checkout_date }})</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Room Unit</label>
+              <select name="room_id" class="form-select" required>
+                <option value="">-- Select Room --</option>
+                {% for u in units %}
+                <option value="{{ u.room_id }}">{{ u.room_no or u.room_id }} (Floor {{ u.floor or '-' }})</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Assign</button>
+            <a href="{{ url_for('admin_belong_to') }}" class="btn btn-secondary">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

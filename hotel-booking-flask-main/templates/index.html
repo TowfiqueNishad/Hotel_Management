@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Carousel -->
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/R.jpg') }}" class="d-block w-100" alt="Luxury Hotel">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>Welcome to Hedwig's Palace</h1>
+                <p>Experience magical comfort</p>
+                <a href="{{ url_for('rooms') }}" class="btn btn-primary btn-lg">Book Now</a>
+            </div>
+        </div>
+        
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/abc.jpg') }}" class="d-block w-100 h-60" alt="BRAC Paradise">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>Hedwig's Palace</h1>
+                <p>Dive into Wizwards</p>
+                <a href="{{ url_for('rooms') }}" class="btn btn-primary btn-lg">Book Now</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Booking Search Form -->
+<div class="container-fluid bg-primary py-5">
+    <div class="container">
+        <form class="row g-3">
+            <div class="col-md-3">
+                <label for="checkInDate" class="form-label text-white">Check-in Date</label>
+                <input type="date" class="form-control" id="checkInDate">
+            </div>
+            <div class="col-md-3">
+                <label for="checkOutDate" class="form-label text-white">Check-out Date</label>
+                <input type="date" class="form-control" id="checkOutDate">
+            </div>
+            <div class="col-md-2">
+                <label for="guests" class="form-label text-white">Guests</label>
+                <select class="form-select" id="guests">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4+</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="roomType" class="form-label text-white">Room Type</label>
+                <select class="form-select" id="roomType">
+                    <option selected>Any</option>
+                    <option>Deluxe</option>
+                    <option>Executive</option>
+                    <option>Family</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-light w-100">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Featured Rooms -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Featured Rooms</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg" class="card-img-top" alt="Deluxe Room">
+                <div class="card-body">
+                    <h5 class="card-title">Deluxe Room</h5>
+                    <p class="card-text">Spacious room with a king-size bed and city view.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-white fw-bold">$150 / night</span>
+                        <a href="{{ url_for('booking', room_id=1) }}" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg" class="card-img-top" alt="Executive Suite">
+                <div class="card-body">
+                    <h5 class="card-title">Executive Suite</h5>
+                    <p class="card-text">Luxury suite with separate living area and panoramic views.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-white fw-bold">$250 / night</span>
+                        <a href="{{ url_for('booking', room_id=2) }}" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="https://cdn.pixabay.com/photo/2018/02/24/17/17/window-3178666_1280.jpg" class="card-img-top" alt="Family Room">
+                <div class="card-body">
+                    <h5 class="card-title">Family Room</h5>
+                    <p class="card-text">Perfect for families with two queen beds and extra space.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-white fw-bold">$200 / night</span>
+                        <a href="{{ url_for('booking', room_id=3) }}" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{{ url_for('rooms') }}" class="btn btn-primary">View All Rooms</a>
+    </div>
+</div>
+
+<!-- Hotel Features -->
+<div class="container mt-5">
+    <h2 class="text-center mb-5">Why Choose Us</h2>
+    <div class="row text-center">
+        <div class="col-md-3 mb-4">
+            <div class="p-3">
+                <i class="fas fa-wifi fa-3x text-white mb-3"></i>
+                <h4>Free WiFi</h4>
+                <p>Stay connected with high-speed internet throughout the hotel.</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="p-3">
+                <i class="fas fa-utensils fa-3x text-white mb-3"></i>
+                <h4>Restaurant</h4>
+                <p>Enjoy delicious meals at our in-house restaurant.</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="p-3">
+                <i class="fas fa-swimming-pool fa-3x text-white mb-3"></i>
+                <h4>Swimming Pool</h4>
+                <p>Relax and refresh in our luxurious swimming pool.</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="p-3">
+                <i class="fas fa-concierge-bell fa-3x text-white mb-3"></i>
+                <h4>Room Service</h4>
+                <p>24/7 room service for your convenience and comfort.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div class="container-fluid bg-light py-5 mt-5">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Guests Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"The hotel exceeded all our expectations. The room was spacious and clean, and the staff was incredibly helpful."</p>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Black Anabil</h6>
+                                <small class="text-muted">New York, USA</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"Perfect location with amazing views. The breakfast was delicious and the staff made us feel at home."</p>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Niloy Ladx</h6>
+                                <small class="text-muted">London, UK</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="card-text">"We had a wonderful stay. The room was comfortable and the amenities were top-notch. Will definitely return!"</p>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Dobby Brown</h6>
+                                <small class="text-muted">Sydney, Australia</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h2>Ready to Experience Luxury?</h2>
+            <p class="lead mb-4">Book your stay today and enjoy our special offers and packages.</p>
+            <a href="{{ url_for('rooms') }}" class="btn btn-primary btn-lg px-5">Book Now</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

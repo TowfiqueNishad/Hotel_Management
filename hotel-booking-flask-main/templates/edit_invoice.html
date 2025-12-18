@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ 'Edit' if invoice else 'Create' }} Invoice</h3>
+          <form method="post">
+            <div class="mb-3">
+              <label class="form-label">Booking ID (optional)</label>
+              <input type="number" name="booking_id" class="form-control" value="{{ invoice.booking_id if invoice else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Issue Date</label>
+              <input type="date" name="issue_date" class="form-control" value="{{ invoice.issue_date if invoice else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Room Charge</label>
+              <input type="number" step="0.01" name="room_charge" class="form-control" value="{{ invoice.room_charge if invoice else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Service Charge</label>
+              <input type="number" step="0.01" name="service_charge" class="form-control" value="{{ invoice.service_charge if invoice else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tax</label>
+              <input type="number" step="0.01" name="tax" class="form-control" value="{{ invoice.tax if invoice else '' }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Total Amount</label>
+              <input type="number" step="0.01" name="total_amount" class="form-control" value="{{ invoice.total_amount if invoice else '' }}">
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a href="{{ url_for('admin_invoices') }}" class="btn btn-secondary">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

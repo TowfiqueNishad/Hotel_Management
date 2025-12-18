@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Services</h2>
+    <a href="{{ url_for('admin_service_create') }}" class="btn btn-success">Create Service</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Unit Price</th>
+        <th>Booking ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in services %}
+      <tr>
+        <td>{{ s.service_id }}</td>
+        <td>{{ s.service_name }}</td>
+        <td>{{ s.description or '-' }}</td>
+        <td>{{ s.unit_price or '-' }}</td>
+        <td>{{ s.booking_id or '-' }}</td>
+        <td>
+          <a href="{{ url_for('admin_service_edit', service_id=s.service_id) }}" class="btn btn-sm btn-primary">Edit</a>
+          <form action="{{ url_for('admin_service_delete', service_id=s.service_id) }}" method="post" style="display:inline-block;" onsubmit="return confirm('Delete this service?');">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}
